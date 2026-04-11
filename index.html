@@ -13,6 +13,357 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="shortcut icon" href="images/logo 1 - Copia.png">
   <link rel="icon" href="images/logo 1 - Copia.png" type="image/png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    .gramado-producao {
+      --primary-green: #2d7a4d;
+      --text-gray: #555;
+      --bg-white: #ffffff;
+      justify-content: center;
+      display: flex;
+      padding: 60px 0px;
+      background-color: var(--bg-white);
+      font-family: sans-serif;
+    }
+
+    .gramado-producao__container {
+      max-width: 1350px;
+      margin: 0 50px;
+    }
+
+    .gramado-producao__header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 40px;
+      margin: 0 0 40px 0;
+      ;
+    }
+
+    .gramado-producao__subtitle {
+      display: block;
+      font-size: 14px;
+      color: var(--primary-green);
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .gramado-producao__title {
+      font-size: 36px;
+      color: #333;
+    }
+
+    .gramado-producao__title strong {
+      color: var(--primary-green);
+      font-weight: bold;
+    }
+
+    .gramado-producao__description {
+      max-width: 300px;
+      font-size: 16px;
+      color: var(--text-gray);
+      line-height: 1.4;
+      margin: 0;
+    }
+
+    /* Grid de Imagens */
+    .gramado-producao__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .gramado-producao__item {
+      border-radius: 15px;
+      overflow: hidden;
+      aspect-ratio: 4 / 2.8;
+      /* Mantém a proporção retangular das fotos */
+    }
+
+    .gramado-producao__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s ease;
+    }
+
+    .gramado-producao__img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Responsividade */
+    @media (max-width: 992px) {
+      .gramado-producao__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gramado-producao__header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .gramado-producao__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gramado-producao__title {
+        font-size: 28px;
+      }
+    }
+
+    /* ── DESKTOP ── */
+    .vs-section {
+      margin: 0 auto;
+      padding: 3rem 2rem;
+      background-color: #f0f0f0;
+    }
+
+    .vs-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .vs-eyebrow {
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #666;
+    }
+
+    .vs-title {
+      font-size: 28px;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin: .4rem 0 .3rem;
+    }
+
+    .vs-title em {
+      font-style: italic;
+      color: #3B6D11;
+    }
+
+    .vs-sub {
+      font-size: 14px;
+      color: #666;
+      margin: 0;
+    }
+
+    .vs-grid {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .vs-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 0.5px solid #ddd;
+      background: #fff;
+      cursor: pointer;
+      width: 260px;
+      flex-shrink: 0;
+      transition: transform .2s;
+    }
+
+    .vs-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .vs-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 9/16;
+      background: #111;
+      overflow: hidden;
+    }
+
+    .vs-thumb-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .vs-thumb-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: #222;
+    }
+
+    .vs-thumb-fallback span {
+      font-size: 11px;
+      color: rgba(255, 255, 255, .4);
+    }
+
+    .vs-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+      z-index: 3;
+    }
+
+    .vs-play {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: rgba(59, 109, 17, .92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform .15s, background .15s;
+      pointer-events: none;
+      z-index: 2;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, .3);
+    }
+
+    .vs-play svg {
+      width: 22px;
+      height: 22px;
+      fill: #fff;
+      margin-left: 3px;
+    }
+
+    .vs-card:hover .vs-play {
+      transform: translate(-50%, -50%) scale(1.12);
+      background: #3B6D11;
+    }
+
+    .vs-card.playing .vs-play {
+      display: none;
+    }
+
+    .vs-overlay {
+      padding: 12px 12px 14px;
+    }
+
+    .vs-tag {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      background: #EAF3DE;
+      color: #3B6D11;
+      border-radius: 4px;
+      padding: 2px 7px;
+      margin-bottom: 6px;
+    }
+
+    .vs-card-title {
+      font-size: 13px;
+      font-weight: 500;
+      color: #1a1a1a;
+      margin: 0 0 4px;
+      line-height: 1.4;
+    }
+
+    .vs-card-desc {
+      font-size: 11px;
+      color: #666;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .vs-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 10px;
+      background: rgba(59, 109, 17, .92);
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 4px;
+      z-index: 2;
+    }
+
+    .vs-footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 2rem;
+    }
+
+    .vs-footer-line {
+      flex: 1;
+      height: 0.5px;
+      background: #ccc;
+    }
+
+    .vs-cta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      background: transparent;
+      border: 0.5px solid #aaa;
+      color: #1a1a1a;
+      padding: 8px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .vs-cta:hover {
+      background: #e8e8e8;
+    }
+
+    .vs-cta svg {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+    }
+
+    /* ── TABLET ── */
+    @media (max-width: 900px) {
+      .vs-card {
+        width: calc(50% - 1rem);
+        max-width: 280px;
+      }
+
+      .vs-grid {
+        gap: 1.2rem;
+      }
+    }
+
+    /* ── CELULAR ── */
+    @media (max-width: 560px) {
+      .vs-section {
+        padding: 2rem 1rem;
+      }
+
+      .vs-card {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      .vs-grid {
+        gap: 1rem;
+      }
+
+      .vs-title {
+        font-size: 22px;
+      }
+    }
+  </style>
   <meta property="og:image" content="https://www.moraisgramas.com.br/images/logo 1 - Copia.png" />
   <meta property="og:title" content="Morais Gramas" />
   <meta name="description"
@@ -36,7 +387,6 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
   <title>Morais Gramas - A Melhor Grameira do Brasil em Grama Esmeralda, Batatais e São Carlos</title>
-
 </head>
 
 <body>
@@ -72,10 +422,47 @@
     </section>
   </main>
   <section class="page" style="background-color: white;">
+    <section class="gramado-producao">
+      <div class="gramado-producao__container">
+
+        <header class="gramado-producao__header">
+          <div class="gramado-producao__title-wrapper">
+            <span class="gramado-producao__subtitle">PRODUÇÃO</span>
+            <h2 class="gramado-producao__title">Nossa <strong>produção</strong></h2>
+          </div>
+          <p class="gramado-producao__description">
+            Acompanhe algumas etapas do nosso processo de cultivo e produção.
+          </p>
+        </header>
+
+        <div class="gramado-producao__grid">
+          <div class="gramado-producao__item">
+            <img src="images/01.jpeg" alt="Colheita manual de tapetes de grama" class="gramado-producao__img">
+          </div>
+          <div class="gramado-producao__item">
+            <img src="images/02.jpeg" alt="Alinhamento de placas de grama" class="gramado-producao__img">
+          </div>
+          <div class="gramado-producao__item">
+            <img src="images/03.jpeg" alt="Campo de cultivo verde" class="gramado-producao__img">
+          </div>
+          <div class="gramado-producao__item">
+            <img src="images/04.jpeg" alt="Detalhe da qualidade da grama" class="gramado-producao__img">
+          </div>
+          <div class="gramado-producao__item">
+            <img src="images/05.jpeg" alt="Linhas de plantio" class="gramado-producao__img">
+          </div>
+          <div class="gramado-producao__item">
+            <img src="images/06.jpeg" alt="Trator no campo de produção" class="gramado-producao__img">
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <section class="sobre-nos">
       <div class="content-sobre">
         <div data-aos="fade-right" class="left">
-          <img src="images/sobre1.jpeg" alt="Homem cortando grama" />
+          <img class="excluiMeno500px" src="images/sobre1.jpeg" alt="Homem cortando grama" />
         </div>
 
         <div data-aos="fade-down" class="right">
@@ -153,13 +540,67 @@
           </div>
         </div>
       </section>
-
-
     </section>
+    <div class="vs-section">
+      <div class="vs-header">
+        <span class="vs-eyebrow">Morais Gramas — Nosso Trabalho</span>
+        <h2 class="vs-title">Veja o verde <em>em movimento</em></h2>
+        <p class="vs-sub">Da produção ao seu jardim — acompanhe cada etapa</p>
+      </div>
+
+      <div class="vs-grid">
+
+        <div class="vs-card" data-id="Du25dKoqUVg">
+          <div class="vs-wrapper">
+            <img class="vs-thumb-img" src="" alt="thumbnail" />
+          </div>
+          <span class="vs-badge">✦ Destaque</span>
+          <div class="vs-play"><svg viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg></div>
+          <div class="vs-overlay">
+            <span class="vs-tag">Apresentação</span>
+            <h3 class="vs-card-title">Morais Gramas — Qualidade do Campo</h3>
+            <p class="vs-card-desc">Nossa história e o cuidado em cada entrega.</p>
+          </div>
+        </div>
+
+        <div class="vs-card" data-id="14Z678wCaVE">
+          <div class="vs-wrapper">
+            <img class="vs-thumb-img" src="" alt="thumbnail" />
+          </div>
+          <div class="vs-play"><svg viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg></div>
+          <div class="vs-overlay">
+            <span class="vs-tag">Plantio</span>
+            <h3 class="vs-card-title">Processo de Plantio</h3>
+            <p class="vs-card-desc">Técnicas que garantem um gramado perfeito.</p>
+          </div>
+        </div>
+
+        <div class="vs-card" data-id="AuTgEfj0EE4">
+          <div class="vs-wrapper">
+            <img class="vs-thumb-img" src="" alt="thumbnail" />
+          </div>
+          <div class="vs-play"><svg viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg></div>
+          <div class="vs-overlay">
+            <span class="vs-tag">Entrega</span>
+            <h3 class="vs-card-title">Logística & Entrega</h3>
+            <p class="vs-card-desc">Gramado fresco direto do campo para você.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
     <section class="gramasTipo">
       <div class="gramas">
         <div data-aos="fade-down" class="nossasGramas">
-          <h1>Nossas Gramas</h1>
+          <h1 style="margin-top: 25px;">Nossas Gramas</h1>
         </div>
 
       </div>
@@ -296,7 +737,48 @@
     </div>
   </section>
   <script>
-    document.getElementById('whatsappBtn').addEventListener('click', function () {
+    const qualities = ['maxresdefault', 'sddefault', 'hqdefault', 'mqdefault', '0'];
+
+    function loadThumb(img, videoId) {
+      let qi = 0;
+      function next() {
+        if (qi >= qualities.length) {
+          img.style.display = 'none';
+          const fb = document.createElement('div');
+          fb.className = 'vs-thumb-fallback';
+          fb.innerHTML = '<span>Sem prévia</span>';
+          img.parentNode.insertBefore(fb, img);
+          return;
+        }
+        img.src = `https://i.ytimg.com/vi/${videoId}/${qualities[qi]}.jpg`;
+        qi++;
+      }
+      img.onerror = next;
+      img.onload = function () {
+        if (img.naturalWidth <= 120) { next(); }
+      };
+      next();
+    }
+
+    document.querySelectorAll('.vs-card').forEach(card => {
+      const videoId = card.dataset.id;
+      const img = card.querySelector('.vs-thumb-img');
+      loadThumb(img, videoId);
+
+      card.addEventListener('click', () => {
+        if (card.classList.contains('playing')) return;
+        const wrapper = card.querySelector('.vs-wrapper');
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+        iframe.allow = 'autoplay; encrypted-media; picture-in-picture';
+        iframe.allowFullscreen = true;
+        wrapper.appendChild(iframe);
+        card.classList.add('playing');
+      });
+    });
+    document.getElementById('whatsappBtn').addEventListener('click', function (e) {
+      e.preventDefault();
+
       const nome = document.getElementById('nome').value.trim();
       const telefone = document.getElementById('telefone').value.trim();
       const email = document.getElementById('email').value.trim();
@@ -307,10 +789,12 @@
         return;
       }
 
-      const texto = `Olá! Me chamo *${nome}*. \nEu desejo ${mensagem}`;
-      const url = `https://wa.me/+5515997660890?text=${encodeURIComponent(texto)}`;
+      const texto = `Olá! Me chamo *${nome}*.\n\nMensagem: ${mensagem}`;
+      const numero = "5515997660890";
 
-      window.open(url, '_blank'); // Abre o WhatsApp em nova aba
+      const url = `https://wa.me/${numero}?text=${encodeURIComponent(texto)}`;
+
+      window.open(url, '_blank');
     });
 
     const questions = document.querySelectorAll('.question');

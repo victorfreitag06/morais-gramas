@@ -130,7 +130,7 @@ nav a:hover {
 }
 
 section.sobre-nos {
-  padding: 40px 120px;
+  padding: 40px 120px 0 120px;
   background-color: white;
 
   h1 {
@@ -715,6 +715,9 @@ label,
     .content-sobre{
       flex-direction: column;
       gap: 20px;
+      img{
+        display: none;
+      }
       .left{
         width: 80%;
       }
